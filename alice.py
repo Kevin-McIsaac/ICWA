@@ -50,10 +50,13 @@ with st.sidebar:
                         help="This determines the number of similar article chunks to use in the prompt. Increasing this adds to the knowledge available but increases the cost/time to answer the inquiry")
     
     instructions = st.text_area('Instructions for Alive to answer the inquiry', 
-                                value='You are an expert in Western Australia "Motor Vehicle (Third Party Insurance) Act"'
-                                      'answering questions from a citizen. \n\n'
-                                      'Provide a clear, detailed answer based on the information provided below. Do not make up answers.\n\n'
-                                      'If you do not know say "I do not know"',
+                                value=
+'''You are an expert in Western Australia "Motor Vehicle (Third Party Insurance) Act" answering questions from a citizen. 
+
+Provide clear but very detailed answers based on the information provided below. Do not make up answers. 
+If you do not know say "I do not know"
+
+Provide suggested next actions''',
                                 height = 300, 
                                 help='This is prepended to the inquiry and provides instructions on how to answer the inqueiry. Try chaning this to get a better result.')
     
