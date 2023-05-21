@@ -40,7 +40,7 @@ st.title("Alice's Playground")
 st.caption("Use the inputs in the sidebar to experiment with the playground settings")
            
 with st.sidebar:
-    namespace = st.radio(os.environ.get('INDEX'), ('H2', 'H3', 'H5'), horizontal=True, 
+    namespace = st.radio(os.environ.get('INDEX'), ('H3', 'H5'), horizontal=True, 
                          help = "For this database select the namespace for searching")
     streaming = st.radio("Stream answers?", ("Yes", "No"),horizontal=True, index=0,
                          help="Streaming shows the output as its generated like chatGPT but the cost and #tokens does not work. Turn off to see costs")
