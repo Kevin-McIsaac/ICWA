@@ -40,21 +40,24 @@ st.title("Alice's Playground")
 st.caption("Use the inputs in the sidebar to experiment with the playground settings")
            
 with st.sidebar:
-    namespace = st.radio(os.environ.get('INDEX'), ('H3', 'H5'), horizontal=True, 
+    kValues = {"H3":1, "H3Split": 5, "H5":10}
+    namespace = st.radio(os.environ.get('INDEX'), kValues.keys(), horizontal=True, 
                          help = "For this database select the namespace for searching")
+    k = st.number_input("How many Articles should Alice consult", value= kValues[namespace], 
+                        min_value=1, max_value=2*kValues[namespace], 
+                        help="This determines the number of similar article chunks to use in the prompt. Increasing this adds to the knowledge available but increases the cost/time to answer the inquiry")
+    length = st.radio('Anser length', ('short', 'detailed'), horizontal=True)
     streaming = st.radio("Stream answers?", ("Yes", "No"),horizontal=True, index=0,
                          help="Streaming shows the output as its generated like chatGPT but the cost and #tokens does not work. Turn off to see costs")
     
-    k = st.number_input("How many Articles should Alice consult", value=5, 
-                        min_value=1, max_value=50, 
-                        help="This determines the number of similar article chunks to use in the prompt. Increasing this adds to the knowledge available but increases the cost/time to answer the inquiry")
     
     instructions = st.text_area('Instructions for Alive to answer the inquiry', 
                                 value=
-'''You are an expert in Western Australia "Motor Vehicle (Third Party Insurance) Act" answering questions from a citizen. 
+f'''You are an expert in Western Australia "Motor Vehicle (Third Party Insurance) Act" answering questions from a citizen. 
 
-Provide clear but very detailed answers based on the information provided below. Do not make up answers. 
-If you do not know say "I do not know"
+Provide a {length} answer only using the information provided below. Think this though step by step to ensure it is correct 
+
+Do not make up answers. If you do not know say "I do not know"
 
 Provide suggested next actions''',
                                 height = 300, 
