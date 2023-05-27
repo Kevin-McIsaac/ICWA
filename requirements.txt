@@ -6,3 +6,4 @@ tiktoken
 streamlit
 python-docx
 azure-core
+langflow
