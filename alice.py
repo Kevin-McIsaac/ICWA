@@ -87,7 +87,7 @@ with st.form("chat"):
                                     help='This is prepended to the inquiry and provides instructions on how to answer the inqueiry. Try chaning this to get a better result.')
 
 
-    qa=makeBot(instructions, k, streaming, 'SCA_H5') 
+    qa=makeBot(instructions, k, streaming, 'ICWA5') 
     inquiry = st.text_area(f"Hi, I'm Alice, the ICWA Chatbot? What is your inquiry?",
                         value="")
     submitted = st.form_submit_button("Submit")
